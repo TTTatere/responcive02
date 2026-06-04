@@ -1,61 +1,57 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Single Column Web Page</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まちなかキャラクター</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-	<div id="wrap">
-	<header>
-		<h1>まちなかキャラクター</h1>
 
-		<input type="checkbox" id="navBtn">  
-        <label for="navBtn" class="open"><span></span></label>
+<header>
+    <h1>企業キャラクター図鑑</h1>
+    <p>住宅街・都市部・郊外ロードサイド別に分類</p>
 
-		<nav>
-			<ul>
-				<li><a href="#">HOME</a></li>
-				<li><a href="#">ABOUT</a></li>
-				<li><a href="#">WORKS</a></li>
-				<li><a href="#">CONTACT</a></li>
-			</ul>
-		</nav>
-		<picture>
-			<source media="(max-width: 599px)" srcset="images/square.png">
-			<source media="(min-width: 640px)" srcset="images/main-visual.png">
-			<img src="images/main-visual.png" alt="メインビジュアル">
-		</picture>
-	</header>
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="キャラクター名や企業名で検索..."
+    >
+</header>
 
-	<main>
-		<section class="sec01">
-			<h2>セクション1</h2>
-			<p>ここにコンテンツが入ります。</p>
-		</section>
-		<section class="sec02">
-			<h2>セクション2</h2>
-			<p>さらにコンテンツが入ります。</p>
-		</section>
-		<section class="sec03">
-			<div class="container">
-				<img src="images/fpark.jpg" alt="">
-				<img src="images/houseclub.jpg" alt="">
-				<img src="images/square.png" alt="">
-				<img src="images/square.png" alt="">
-				<img src="images/square.png" alt="">
-				<img src="images/square.png" alt="">
-			</div>
-		</section>
-	</main>
+<nav>
+    <button onclick="filterCards('all')">すべて</button>
+    <button onclick="filterCards('residential')">住宅街</button>
+    <button onclick="filterCards('urban')">都市部</button>
+    <button onclick="filterCards('roadside')">郊外</button>
+</nav>
 
-	<footer>
-		<p>© My Site </p>
-	</footer>
-</div>
+<main id="gallery">
+
+    <div class="card residential">
+        <img src="images/peko.jpg" alt="ペコちゃん">
+        <h2></h2>
+        <p></p>
+        <span class="tag residential-tag">住宅街</span>
+    </div>
+
+    <div class="card urban">
+        <img src="images/colonel.jpg" alt="カーネル・サンダース">
+        <h2>カーネル・サンダース</h2>
+        <p>KFC</p>
+        <span class="tag urban-tag">都市部</span>
+    </div>
+
+    <div class="card roadside">
+        <img src="images/yellowhat.jpg" alt="イエローハット">
+        <h2>イエローハットキャラクター</h2>
+        <p>イエローハット</p>
+        <span class="tag roadside-tag">郊外</span>
+    </div>
+
+</main>
+
+<script src="script.js"></script>
+
 </body>
-
 </html>
