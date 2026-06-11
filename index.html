@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>まちなかキャラクター</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>まちなかキャラクター</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
     <h1>まちなかキャラクター</h1>
     <p>住宅街・都市部・郊外ロードサイド別に分類</p>
-
-    <input
-        type="text"
-        id="searchBox"
-        placeholder="キャラクター名や企業名で検索..."
-    >
 </header>
 
 <main id="gallery">
 
-    <div class="card residential">
-        <img src="images/peko.jpg" alt="">
-        <h2>住宅街のキャラクター</h2>
-        <p>クリックで詳細を見る</p>
-        <span class="tag residential-tag">住宅街</span>
-    </div>
+    <a href="residential.html" class="card-link">
+        <div class="card residential">
+            <img src="images/peko.jpg">
+            <h2>住宅街のキャラクター</h2>
+            <p>クリックで詳細を見る</p>
+            <span class="tag residential-tag">住宅街</span>
+        </div>
+    </a>
 
-    <div class="card urban">
-        <img src="images/colonel.jpg" alt="">
-        <h2>都市部のキャラクター</h2>
-        <p>クリックで詳細を見る</p>
-        <span class="tag urban-tag">都市部</span>
-    </div>
+    <a href="urban.html" class="card-link">
+        <div class="card urban">
+            <img src="images/colonel.jpg">
+            <h2>都市部のキャラクター</h2>
+            <p>クリックで詳細を見る</p>
+            <span class="tag urban-tag">都市部</span>
+        </div>
+    </a>
 
-    <div class="card roadside">
-        <img src="images/yellowhat.jpg" alt="">
-        <h2>郊外部のキャラクター</h2>
-        <p>クリックで詳細を見る</p>
-        <span class="tag roadside-tag">郊外</span>
-    </div>
+    <a href="roadside.html" class="card-link">
+        <div class="card roadside">
+            <img src="images/yellowhat.jpg">
+            <h2>郊外のキャラクター</h2>
+            <p>クリックで詳細を見る</p>
+            <span class="tag roadside-tag">郊外</span>
+        </div>
+    </a>
 
 </main>
-
-<script src="script.js"></script>
 
 </body>
 </html>
