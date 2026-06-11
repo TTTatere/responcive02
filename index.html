@@ -11,39 +11,43 @@
 
 <header>
     <h1>まちなかキャラクター</h1>
-    <p>住宅街・都市部・郊外ロードサイド別に分類</p>
+
+    <div class="buttons">
+        <button onclick="filterGallery('all')">すべて</button>
+        <button onclick="filterGallery('residential')">住宅街</button>
+        <button onclick="filterGallery('urban')">都市部</button>
+        <button onclick="filterGallery('roadside')">郊外</button>
+    </div>
 </header>
 
 <main id="gallery">
 
-    <a href="residential.html" class="card-link">
-        <div class="card residential">
-            <img src="images/peko.jpg">
-            <h2>住宅街のキャラクター</h2>
-            <p>クリックで詳細を見る</p>
-            <span class="tag residential-tag">住宅街</span>
-        </div>
-    </a>
+    <div class="card residential">
+        <img src="images/peko.jpg">
+        <h2>住宅街キャラA</h2>
+        <p>パン屋の看板キャラ</p>
+    </div>
 
-    <a href="urban.html" class="card-link">
-        <div class="card urban">
-            <img src="images/colonel.jpg">
-            <h2>都市部のキャラクター</h2>
-            <p>クリックで詳細を見る</p>
-            <span class="tag urban-tag">都市部</span>
-        </div>
-    </a>
+    <div class="card residential">
+        <img src="images/cat.jpg">
+        <h2>住宅街キャラB</h2>
+        <p>商店街の猫</p>
+    </div>
 
-    <a href="roadside.html" class="card-link">
-        <div class="card roadside">
-            <img src="images/yellowhat.jpg">
-            <h2>郊外のキャラクター</h2>
-            <p>クリックで詳細を見る</p>
-            <span class="tag roadside-tag">郊外</span>
-        </div>
-    </a>
+    <div class="card urban">
+        <img src="images/colonel.jpg">
+        <h2>都市部キャラA</h2>
+        <p>ファストフード系</p>
+    </div>
+
+    <div class="card roadside">
+        <img src="images/yellowhat.jpg">
+        <h2>郊外キャラA</h2>
+        <p>カー用品店キャラ</p>
+    </div>
 
 </main>
 
+<script src="script.js"></script>
 </body>
 </html>
