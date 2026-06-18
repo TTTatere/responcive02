@@ -1,5 +1,18 @@
 function filterGallery(category) {
-    const cards = document.querySelectorAll('.card');
+    const cards = document.querySelectorAllconst modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+
+document.querySelectorAll(".card img").forEach(img => {
+    img.addEventListener("click", () => {
+        modalImg.src = img.src;
+        modal.classList.add("show");
+    });
+});
+
+// 背景クリックで閉じる
+modal.addEventListener("click", () => {
+    modal.classList.remove("show");
+});('.card');
 
     cards.forEach(card => {
         // すべて表示
