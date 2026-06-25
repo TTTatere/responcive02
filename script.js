@@ -1,45 +1,45 @@
-javascript id="jsfull"
 document.addEventListener("DOMContentLoaded", () => {
 
-    // フィルター
+    console.log("JS読み込み成功");
+
     window.filterGallery = function(category){
 
-        const cards = document.querySelectorAll(".card");
+        document.querySelectorAll(".card").forEach(card => {
 
-        cards.forEach(card => {
-
-            if(category === "all"){
+            if(category === "all" || card.classList.contains(category)){
                 card.classList.remove("hide");
             } else {
-                if(card.classList.contains(category)){
-                    card.classList.remove("hide");
-                } else {
-                    card.classList.add("hide");
-                }
+                card.classList.add("hide");
             }
 
         });
 
     }
 
-    // モーダル
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modalImg");
+
+    console.log("modal:", modal);
+    console.log("modalImg:", modalImg);
+
+    if(!modal || !modalImg){
+        console.error("modalが見つかりません");
+        return;
+    }
 
     document.querySelectorAll(".card img").forEach(img => {
 
         img.addEventListener("click", () => {
 
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
+            console.log("クリック:", img.src);
 
+            modalImg.src = img.src;
             modal.classList.add("show");
 
         });
 
     });
 
-    // 閉じる
     modal.addEventListener("click", () => {
         modal.classList.remove("show");
     });
