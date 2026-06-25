@@ -1,4 +1,4 @@
-```javascript id="jsfull"
+javascript id="jsfull"
 document.addEventListener("DOMContentLoaded", () => {
 
     // フィルター
@@ -45,4 +45,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
-```
