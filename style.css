@@ -1,4 +1,4 @@
-```css
+```css id="cssfull"
 body{
     font-family: sans-serif;
     background: #f4f4f4;
@@ -23,8 +23,6 @@ button{
     border-radius: 6px;
     cursor: pointer;
     background: white;
-    font-size: 14px;
-    transition: 0.3s;
 }
 
 button:hover{
@@ -33,9 +31,29 @@ button:hover{
 
 #gallery{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1200px){
+    #gallery{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px){
+    #gallery{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px){
+    #gallery{
+        grid-template-columns: 1fr;
+    }
 }
 
 .card{
@@ -52,7 +70,7 @@ button:hover{
 
 .card img{
     width: 100%;
-    height: 250px;
+    height: 220px;
     object-fit: cover;
     cursor: pointer;
 }
@@ -60,7 +78,7 @@ button:hover{
 .card h2{
     margin: 0;
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .card p{
@@ -74,7 +92,6 @@ button:hover{
 }
 
 /* モーダル */
-
 .modal{
     display: none;
     position: fixed;
@@ -94,6 +111,5 @@ button:hover{
     max-width: 90%;
     max-height: 90%;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(255,255,255,.3);
 }
 ```
