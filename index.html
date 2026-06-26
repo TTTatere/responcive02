@@ -1,122 +1,223 @@
-
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>まちなかキャラクター</title>
+
+    <title>ギャラリー</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<header>
-    <h1>まちなかキャラクター</h1>
+<header class="header">
 
-    <div class="buttons">
-        <button onclick="filterGallery('all')">すべて</button>
-        <button onclick="filterGallery('residential')">住宅街</button>
-        <button onclick="filterGallery('urban')">都市部</button>
-    </div>
+    <a href="index.html" class="logo">
+     
+    </a>
+
+    <nav class="nav">
+
+        <a href="main.html" class="nav-link">ホーム</a>
+
+        <a href="index.html" class="nav-link active">ギャラリー</a>
+
+        <a href="about.html" class="nav-link">サイトについて</a>
+
+    </nav>
+
 </header>
 
-<main id="gallery">
+<main>
+
+<section class="gallery-title">
+
+    <h1>ギャラリー</h1>
+
+    <p>
+        九州の街を巡るように、
+        地域企業のキャラクターをご覧ください。
+    </p>
+
+</section>
+
+<section class="buttons">
+
+    <button onclick="filterGallery('all')">すべて</button>
+
+    <button onclick="filterGallery('residential')">住宅街</button>
+
+    <button onclick="filterGallery('urban')">都市部</button>
+
+</section>
+
+<section id="gallery">
 
     <!-- 住宅街 -->
+
     <div class="card residential">
+
         <img src="images/katumidojo.jpg" alt="黒石塾">
+
         <h2>北九州合気道 合気会 黒石塾</h2>
+
         <p>合気道道場</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/houseclub.jpg" alt="ハウス倶楽部">
+
         <h2>株式会社 ハウス倶楽部</h2>
+
         <p>不動産</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/kimurasyonika.jpg" alt="きむら小児科">
+
         <h2>きむら小児科</h2>
+
         <p>小児科</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/tomi.jpg" alt="たこ焼とみ">
+
         <h2>たこ焼 とみ</h2>
+
         <p>たこ焼き</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/micin.jpg" alt="みしん工房">
+
         <h2>みしん工房</h2>
+
         <p>ミシン販売店</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/janlrvo.jpg" alt="麻雀Evo">
+
         <h2>実践ノーレート麻雀Evo</h2>
+
         <p>雀荘</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/danbowarks.jpg" alt="暖母ワークス">
+
         <h2>暖母ワークス</h2>
+
         <p>協会・組織</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/kawakamihospital.jpg" alt="かわかみ動物病院">
+
         <h2>かわかみ動物病院</h2>
+
         <p>動物病院</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/mikkahome2.jpg" alt="ニッカホーム">
+
         <h2>ニッカホーム</h2>
+
         <p>リノベーション業者</p>
+
     </div>
 
     <div class="card residential">
+
         <img src="images/chaptainfoods.jpg" alt="キャプテンフーヅ">
+
         <h2>キャプテンフーヅ</h2>
+
         <p>食品メーカー</p>
+
     </div>
 
     <!-- 都市部 -->
+
     <div class="card urban">
+
         <img src="images/colonel.jpg" alt="都市部キャラ">
+
         <h2>都市部キャラA</h2>
+
         <p>ファストフード系</p>
+
     </div>
 
     <div class="card urban">
+
         <img src="images/urban2.jpg" alt="都市部キャラB">
+
         <h2>都市部キャラB</h2>
+
         <p>IT企業</p>
+
     </div>
 
     <div class="card urban">
+
         <img src="images/urban3.jpg" alt="都市部キャラC">
+
         <h2>都市部キャラC</h2>
+
         <p>広告会社</p>
+
     </div>
 
     <div class="card urban">
+
         <img src="images/urban4.jpg" alt="都市部キャラD">
+
         <h2>都市部キャラD</h2>
+
         <p>コンサル</p>
+
     </div>
+
+</section>
 
 </main>
 
-<!-- モーダル -->
 <div id="modal" class="modal">
+
     <img id="modalImg" src="" alt="">
+
 </div>
+
+<footer>
+
+    <p>© 2026 キャラクターと巡る九州</p>
+
+</footer>
 
 <script src="script.js"></script>
 
 </body>
 </html>
-
