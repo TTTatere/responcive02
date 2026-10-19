@@ -1,23 +1,20 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
     console.log("JS読み込み成功");
 
 
-    window.filterGallery = function(category){
+    window.filterGallery = function(category) {
 
         document.querySelectorAll(".card").forEach(card => {
 
-            if(
+            if (
                 category === "all" ||
                 card.classList.contains(category)
-            ){
-
+            ) {
                 card.classList.remove("hide");
-
-            }else{
-
+            } else {
                 card.classList.add("hide");
-
             }
 
         });
@@ -29,22 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("modal");
 
     const modalImg = document.getElementById("modalImg");
+    const modalImg2 = document.getElementById("modalImg2");
 
     const googleMap = document.getElementById("googleMap");
-
     const modalClose = document.getElementById("modalClose");
 
 
-    if(
+
+    if (
         !modal ||
         !modalImg ||
+        !modalImg2 ||
         !googleMap
-    ){
-
+    ) {
         console.error("モーダル関連の要素が見つかりません");
-
         return;
-
     }
 
 
@@ -55,35 +51,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.stopPropagation();
 
-
-            /* 画像を表示 */
-
+         
             modalImg.src = img.src;
-
             modalImg.alt = img.alt;
 
 
+            const images = Array.from(
+                document.querySelectorAll(".card img")
+            );
+
+ 
+            const currentIndex = images.indexOf(img);
+
+       
+            const nextIndex = (currentIndex + 1) % images.length;
+
+           
+            const nextImg = images[nextIndex];
+
+           
+            modalImg2.src = nextImg.src;
+            modalImg2.alt = nextImg.alt;
+
 
             const lat = img.dataset.lat;
-
             const lng = img.dataset.lng;
 
-
             console.log("撮影場所");
-
             console.log("緯度:", lat);
-
             console.log("経度:", lng);
 
-
-
-            if(lat && lng){
+            if (lat && lng) {
 
                 googleMap.src =
                     `https://www.google.com/maps?q=${lat},${lng}&output=embed`;
 
-            }else{
-
+            } else {
 
                 googleMap.src = "";
 
@@ -91,10 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
             modal.classList.add("show");
-
-
 
             document.body.style.overflow = "hidden";
 
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    if(modalClose){
+    if (modalClose) {
 
         modalClose.addEventListener("click", (event) => {
 
@@ -118,10 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
     modal.addEventListener("click", (event) => {
 
-        if(event.target === modal){
+        if (event.target === modal) {
 
             closeModal();
 
@@ -130,10 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-
+  
     document.addEventListener("keydown", (event) => {
 
-        if(event.key === "Escape"){
+        if (event.key === "Escape") {
 
             closeModal();
 
@@ -142,13 +141,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    function closeModal(){
+
+    function closeModal() {
 
         modal.classList.remove("show");
 
         document.body.style.overflow = "";
 
+
         googleMap.src = "";
+
+
+        modalImg.src = "";
+        modalImg2.src = "";
 
     }
 
