@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("JS読み込み成功");
 
 
+
     window.filterGallery = function(category) {
 
         document.querySelectorAll(".card").forEach(card => {
@@ -23,13 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
     const modal = document.getElementById("modal");
 
     const modalImg = document.getElementById("modalImg");
+
     const modalImg2 = document.getElementById("modalImg2");
 
     const googleMap = document.getElementById("googleMap");
+
     const modalClose = document.getElementById("modalClose");
+
 
 
 
@@ -45,41 +50,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
     document.querySelectorAll(".card img").forEach(img => {
 
-        img.addEventListener("click", (event) => {
+        img.addEventListener("click", event => {
 
             event.stopPropagation();
 
-         
+
+
+
             modalImg.src = img.src;
+
             modalImg.alt = img.alt;
+
 
 
             const images = Array.from(
                 document.querySelectorAll(".card img")
             );
 
- 
+
+
+
             const currentIndex = images.indexOf(img);
 
-       
-            const nextIndex = (currentIndex + 1) % images.length;
 
-           
-            const nextImg = images[nextIndex];
 
-           
-            modalImg2.src = nextImg.src;
-            modalImg2.alt = nextImg.alt;
+            if (currentIndex !== -1 && images.length > 1) {
+
+                const nextIndex =
+                    (currentIndex + 1) % images.length;
+
+                const nextImg = images[nextIndex];
+
+
+                modalImg2.src = nextImg.src;
+
+                modalImg2.alt = nextImg.alt;
+
+            } else {
+
+
+                modalImg2.src = "";
+
+                modalImg2.alt = "";
+
+            }
+
 
 
             const lat = img.dataset.lat;
+
             const lng = img.dataset.lng;
 
+
             console.log("撮影場所");
+
             console.log("緯度:", lat);
+
             console.log("経度:", lng);
+
+
+
 
             if (lat && lng) {
 
@@ -87,6 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     `https://www.google.com/maps?q=${lat},${lng}&output=embed`;
 
             } else {
+
+
 
                 googleMap.src = "";
 
@@ -104,9 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
     if (modalClose) {
 
-        modalClose.addEventListener("click", (event) => {
+        modalClose.addEventListener("click", event => {
 
             event.stopPropagation();
 
@@ -118,7 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    modal.addEventListener("click", (event) => {
+
+    modal.addEventListener("click", event => {
 
         if (event.target === modal) {
 
@@ -129,8 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  
-    document.addEventListener("keydown", (event) => {
+
+
+    document.addEventListener("keydown", event => {
 
         if (event.key === "Escape") {
 
@@ -144,7 +182,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closeModal() {
 
+
+
         modal.classList.remove("show");
+
+
+
 
         document.body.style.overflow = "";
 
@@ -152,8 +195,18 @@ document.addEventListener("DOMContentLoaded", () => {
         googleMap.src = "";
 
 
+
+
         modalImg.src = "";
+
+        modalImg.alt = "";
+
+
+
+
         modalImg2.src = "";
+
+        modalImg2.alt = "";
 
     }
 
