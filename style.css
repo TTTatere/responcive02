@@ -974,3 +974,35 @@ body{
         height: 250px;
     }
 }
+
+/* モーダル内の画像を横並びにする */
+.modal-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+/* 2枚の画像の表示サイズ */
+.modal-images img {
+    display: block;
+    width: 45%;
+    max-width: 500px;
+    max-height: 60vh;
+    object-fit: contain;
+}
+
+/* スマートフォンでは縦並び */
+@media (max-width: 600px) {
+    .modal-images {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .modal-images img {
+        width: 90%;
+        max-height: 35vh;
+    }
+}
