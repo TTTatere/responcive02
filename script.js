@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("JS読み込み成功");
 
-    
     window.filterGallery = function (category) {
         document.querySelectorAll("#gallery .card").forEach(card => {
             if (
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    
     const gallery = document.getElementById("gallery");
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modalImg");
@@ -31,13 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
         !modalImg ||
         !modalImg2 ||
         !mapContainer ||
-        !googleMap
+        !googleMap ||
+        !modalClose
     ) {
         console.error("モーダル関連の要素が見つかりません");
         return;
     }
 
-    
     function isValidImage(img) {
         if (!img) return false;
 
@@ -51,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-    
     gallery.addEventListener("click", event => {
         const img = event.target.closest("img");
 
@@ -65,34 +62,30 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-    
         modalImg.src = img.src;
         modalImg.alt = img.alt || "選択した店舗の画像";
         modalImg.style.display = "block";
 
-     
-        const visibleImages = Array.from(
-            gallery.querySelectorAll(".card:not(.hide) img")
-        ).filter(isValidImage);
+        const secondImage = img.dataset.secondImage;
 
-        const currentIndex = visibleImages.indexOf(img);
-
-        if (currentIndex !== -1 && visibleImages.length > 1) {
-            const nextIndex =
-                (currentIndex + 1) % visibleImages.length;
-
-            const nextImg = visibleImages[nextIndex];
-
-            modalImg2.src = nextImg.src;
-            modalImg2.alt = nextImg.alt || "次の店舗の画像";
+        if (secondImage && secondImage.trim() !== "") {
+            modalImg2.src = secondImage;
+            modalImg2.alt = (img.alt || "店舗") + "の別画像";
             modalImg2.style.display = "block";
+
+            modalImg2.onerror = () => {
+                console.error("2枚目の画像を読み込めません:", secondImage);
+                modalImg2.removeAttribute("src");
+                modalImg2.alt = "";
+                modalImg2.style.display = "none";
+            };
         } else {
             modalImg2.removeAttribute("src");
             modalImg2.alt = "";
             modalImg2.style.display = "none";
+            modalImg2.onerror = null;
         }
 
-     
         const lat = img.dataset.lat;
         const lng = img.dataset.lng;
 
@@ -121,36 +114,31 @@ document.addEventListener("DOMContentLoaded", () => {
             console.warn("この店舗には緯度・経度が登録されていません");
         }
 
-
-        
         modal.classList.add("show");
         document.body.style.overflow = "hidden";
     });
 
-  
     function closeModal() {
         modal.classList.remove("show");
         document.body.style.overflow = "";
 
         modalImg.removeAttribute("src");
         modalImg.alt = "";
+        modalImg.style.display = "block";
 
         modalImg2.removeAttribute("src");
         modalImg2.alt = "";
-        modalImg2.style.display = "block";
+        modalImg2.style.display = "none";
+        modalImg2.onerror = null;
 
         googleMap.removeAttribute("src");
         mapContainer.style.display = "block";
     }
 
-    
-    if (modalClose) {
-        modalClose.addEventListener("click", event => {
-            event.stopPropagation();
-            closeModal();
-        });
-    }
-
+    modalClose.addEventListener("click", event => {
+        event.stopPropagation();
+        closeModal();
+    });
 
     modal.addEventListener("click", event => {
         if (event.target === modal) {
@@ -158,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-  
     document.addEventListener("keydown", event => {
         if (
             event.key === "Escape" &&
